@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnthings/app_bloc.dart';
 import 'package:learnthings/app_states.dart';
+import 'package:learnthings/screens/signIn/sign_in.dart';
 import 'package:learnthings/screens/welcomepage/bloc/welcome_blocs.dart';
 import 'package:learnthings/screens/welcomepage/welcomepage.dart';
+import 'package:learnthings/utilities/styles/app_style.dart';
 
 import 'app_events.dart';
 
@@ -24,13 +26,22 @@ class MyApp extends StatelessWidget {
           create: (context) => WelcomeBloc(),
         ),
         BlocProvider(
+          //to tell the app wich bloc gonna created first
+          // lazy: false,
           create: (context) => AppBlocs(),
         ),
       ],
       child: ScreenUtilInit(
-        builder: (context, child) => const MaterialApp(
+        builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: Welcome(),
+          theme: ThemeData(
+            appBarTheme:
+                AppBarTheme(elevation: 0, backgroundColor: Styles.bgColor),
+          ),
+          home: const Welcome(),
+          routes: {
+            "signInPage": (context) => const SignInPage(),
+          },
         ),
       ),
     );
@@ -92,12 +103,14 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FloatingActionButton(
+            heroTag: 'o1',
             onPressed: () =>
                 BlocProvider.of<AppBlocs>(context).add(Increment()),
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
+            heroTag: 'o2',
             onPressed: () =>
                 BlocProvider.of<AppBlocs>(context).add(Decrement()),
             tooltip: 'Decrement',

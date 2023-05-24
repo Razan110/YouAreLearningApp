@@ -117,8 +117,10 @@ class _WelcomeState extends State<Welcome> {
                     curve: Curves.easeIn);
               } else {
                 //jump to the new page
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const Welcome()));
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  "signInPage",
+                  ((route) => false),
+                );
               }
             },
 
