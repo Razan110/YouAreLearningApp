@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Styles {
-  static Color bgColor = const Color.fromARGB(255, 30, 32, 86);
-  static Color buttomColor = const Color.fromARGB(255, 143, 146, 207);
   static Color blackColor = const Color.fromARGB(255, 0, 0, 0);
   static Color wightColor = const Color.fromARGB(255, 255, 255, 255);
-  static Color logInRegisterButtomColor = Color.fromARGB(255, 143, 207, 186);
+  static Color bgColorDarcker = const Color.fromARGB(255, 11, 36, 71);
+  static Color bgColor = const Color.fromARGB(255, 30, 32, 86);
+  static Color buttomColor = const Color.fromARGB(255, 143, 146, 207);
+  static Color seaColor = const Color.fromARGB(255, 185, 233, 249);
+  static Color pinkColoor = const Color.fromARGB(255, 255, 163, 253);
+  static Color darkPinkColoor = const Color.fromARGB(255, 227, 132, 255);
 
   static TextStyle textStyle = const TextStyle(
     fontSize: 16,

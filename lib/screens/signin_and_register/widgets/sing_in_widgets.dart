@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnthings/utilities/styles/app_style.dart';
 
 //App Bar
-AppBar buildAppBar() {
+AppBar buildAppBar(String txt, void Function()? func) {
   return AppBar(
     bottom: PreferredSize(
       preferredSize: const Size.fromHeight(10.0),
@@ -14,12 +14,22 @@ AppBar buildAppBar() {
     ),
     backgroundColor: Styles.bgColor,
     title: Text(
-      'Log In',
+      txt,
       style: Styles.headLine1.copyWith(
         fontSize: 29,
         fontWeight: FontWeight.bold,
       ),
     ),
+    //textType == 'password' ? true : false,
+    leading: txt == 'Register'
+        ? IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Styles.wightColor,
+            ),
+            onPressed: func,
+          )
+        : null,
   );
 }
 //
@@ -67,7 +77,7 @@ Widget reuseableText(String text) {
 }
 
 Widget buildTextField(String textType, String hintText, String iconPath,
-    TextInputType keyboardType) {
+    TextInputType keyboardType, void Function(String value)? func) {
   return Container(
     width: 325.w,
     height: 50.h,
@@ -93,6 +103,8 @@ Widget buildTextField(String textType, String hintText, String iconPath,
             width: 270.w,
             height: 50.h,
             child: TextField(
+              //to get the email and the password from the sign in
+              onChanged: (value) => func!(value),
               style: Styles.inputText,
               autofocus: false,
               autocorrect: false,
@@ -104,21 +116,6 @@ Widget buildTextField(String textType, String hintText, String iconPath,
                 border: InputBorder.none,
                 enabledBorder: null,
                 disabledBorder: null,
-                // border: const OutlineInputBorder(
-                //   borderSide: BorderSide(
-                //     color: Colors.transparent,
-                //   ),
-                // ),
-                // enabledBorder: const OutlineInputBorder(
-                //   borderSide: BorderSide(
-                //     color: Colors.transparent,
-                //   ),
-                // ),
-                // disabledBorder: const OutlineInputBorder(
-                //   borderSide: BorderSide(
-                //     color: Colors.transparent,
-                //   ),
-                // ),
               ),
             ),
           ),
@@ -128,25 +125,33 @@ Widget buildTextField(String textType, String hintText, String iconPath,
   );
 }
 
-Widget forgotPasswordOrNeedToRegster(String text) {
+Widget forgotPasswordOrNeedToRegster(String text, void Function()? func) {
   return SizedBox(
     width: 100.w,
-    height: 13.h,
+    height: 15.h,
     child: GestureDetector(
-      onTap: () {},
+      onTap: func,
       child: Text(
         text,
         style: Styles.headLine2.copyWith(
-            color: const Color.fromARGB(255, 196, 195, 195),
-            decoration: TextDecoration.underline,
-            fontSize: 15),
+          color: Styles.seaColor,
+          decoration: TextDecoration.underline,
+          fontSize: text == 'Register!' ? 17 : 14,
+        ),
       ),
     ),
   );
 }
 
-Widget buildLogInAndRegisterButton(String buttonText) {
+Widget buildLogInAndRegisterButton(String buttonText, void Function()? func) {
   return GestureDetector(
+    //chang it to a single tap....
+    onDoubleTap: func,
+
+    // behavior: HitTestBehavior.translucent,
+    // onTap: () {
+    //   func;
+    // },
     child: Container(
       width: 140.w,
       height: 40.h,
@@ -158,7 +163,7 @@ Widget buildLogInAndRegisterButton(String buttonText) {
         child: Text(
           buttonText,
           style: Styles.headLine1.copyWith(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 20.sp,
             fontWeight: FontWeight.bold,
           ),

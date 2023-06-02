@@ -1,16 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnthings/app_bloc.dart';
 import 'package:learnthings/app_states.dart';
-import 'package:learnthings/screens/signIn/sign_in.dart';
+import 'package:learnthings/screens/bloc_provider.dart';
+import 'package:learnthings/screens/signin_and_register/register.dart';
+import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_blocs.dart';
+import 'package:learnthings/screens/signin_and_register/sign_in.dart';
 import 'package:learnthings/screens/welcomepage/bloc/welcome_blocs.dart';
 import 'package:learnthings/screens/welcomepage/welcomepage.dart';
 import 'package:learnthings/utilities/styles/app_style.dart';
 
 import 'app_events.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -21,16 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => WelcomeBloc(),
-        ),
-        BlocProvider(
-          //to tell the app wich bloc gonna created first
-          // lazy: false,
-          create: (context) => AppBlocs(),
-        ),
-      ],
+      providers: AppBlocProvider.allBlocProvider,
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -40,7 +38,8 @@ class MyApp extends StatelessWidget {
           ),
           home: const Welcome(),
           routes: {
-            "signInPage": (context) => const SignInPage(),
+            'signIn': (context) => const SignIn(),
+            'register': (context) => const Register(),
           },
         ),
       ),

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "101517826498",
+    "project_id": "learningapp-bf2b6",
+    "storage_bucket": "learningapp-bf2b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101517826498:android:bf23056d5c336689e09e5b",
+        "android_client_info": {
+          "package_name": "com.example.learnthings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101517826498-36pa8p2frmet4988esugbktci3tvlg9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyJviER-l-SX5aDWnveGmbCnadd2ZZoWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101517826498-36pa8p2frmet4988esugbktci3tvlg9t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "101517826498-ttd9jhq3anb2m5meh5ne8efcmact1k5l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.learnthings"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

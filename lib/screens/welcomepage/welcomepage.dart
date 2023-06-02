@@ -118,7 +118,7 @@ class _WelcomeState extends State<Welcome> {
               } else {
                 //jump to the new page
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  "signInPage",
+                  'signIn',
                   ((route) => false),
                 );
               }
