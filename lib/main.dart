@@ -6,7 +6,6 @@ import 'package:learnthings/app_bloc.dart';
 import 'package:learnthings/app_states.dart';
 import 'package:learnthings/screens/bloc_provider.dart';
 import 'package:learnthings/screens/signin_and_register/register.dart';
-import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_blocs.dart';
 import 'package:learnthings/screens/signin_and_register/sign_in.dart';
 import 'package:learnthings/screens/welcomepage/bloc/welcome_blocs.dart';
 import 'package:learnthings/screens/welcomepage/welcomepage.dart';
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
           home: const Welcome(),
           routes: {
             'signIn': (context) => const SignIn(),
-            'register': (context) => const Register(),
+            'sign up': (context) => const Register(),
           },
         ),
       ),

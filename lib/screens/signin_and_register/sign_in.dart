@@ -5,7 +5,7 @@ import 'package:learnthings/screens/signin_and_register/bloc/signIn/siginin_even
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_blocs.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_states.dart';
 import 'package:learnthings/screens/signin_and_register/controllers/signin_controller.dart';
-import 'package:learnthings/screens/signin_and_register/widgets/sing_in_widgets.dart';
+import 'package:learnthings/screens/signin_and_register/widgets/singin_register_widgets.dart';
 import 'package:learnthings/utilities/styles/app_style.dart';
 
 class SignIn extends StatefulWidget {
@@ -35,11 +35,11 @@ class _SignInStates extends State<SignIn> {
                           child: buildLogin(context),
                         ),
                         Center(
-                          child: reuseableText('Or use your Email to login'),
+                          child: reuseableText('Or use your email to login'),
                         ),
                         Container(
                           padding: const EdgeInsets.only(left: 20, right: 20),
-                          margin: EdgeInsets.only(top: 35.h, bottom: 125.h),
+                          margin: EdgeInsets.only(top: 30.h, bottom: 125.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -77,7 +77,9 @@ class _SignInStates extends State<SignIn> {
                                 height: 20.h,
                               ),
                               forgotPasswordOrNeedToRegster(
-                                  'Forgot Password?', null),
+                                'Forgot Password?',
+                                null,
+                              ),
                               SizedBox(
                                 height: 20.h,
                               ),
@@ -88,14 +90,14 @@ class _SignInStates extends State<SignIn> {
                                     child: Text(
                                       'You don\'t have an account?',
                                       style: Styles.inputText
-                                          .copyWith(fontSize: 15),
+                                          .copyWith(fontSize: 14),
                                     ),
                                   ),
                                   //write the Register page after you done with the log in
-                                  forgotPasswordOrNeedToRegster('Register!',
-                                      () {
+                                  forgotPasswordOrNeedToRegster(
+                                      'Create account', () {
                                     Navigator.of(context).pushNamed(
-                                      'register',
+                                      'sign up',
                                     );
                                   }),
                                 ],

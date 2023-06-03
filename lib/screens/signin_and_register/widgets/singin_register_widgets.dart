@@ -20,8 +20,7 @@ AppBar buildAppBar(String txt, void Function()? func) {
         fontWeight: FontWeight.bold,
       ),
     ),
-    //textType == 'password' ? true : false,
-    leading: txt == 'Register'
+    leading: txt == 'Create account'
         ? IconButton(
             icon: Icon(
               Icons.arrow_back,
@@ -39,7 +38,7 @@ AppBar buildAppBar(String txt, void Function()? func) {
 Widget buildLogin(BuildContext context) {
   return SizedBox(
     width: 200.w,
-    height: 100.h,
+    height: 70.h,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -71,7 +70,10 @@ Widget reuseableText(String text) {
     margin: EdgeInsets.only(bottom: 5.h),
     child: Text(
       text,
-      style: Styles.headLine2,
+      style: text ==
+              'By creating an account you are agreeing to our tearm and conditions.'
+          ? Styles.headLine2.copyWith(fontSize: 13, color: Styles.wightColor)
+          : Styles.headLine2,
     ),
   );
 }
@@ -136,7 +138,7 @@ Widget forgotPasswordOrNeedToRegster(String text, void Function()? func) {
         style: Styles.headLine2.copyWith(
           color: Styles.seaColor,
           decoration: TextDecoration.underline,
-          fontSize: text == 'Register!' ? 17 : 14,
+          fontSize: text == 'Create account' ? 16 : 14,
         ),
       ),
     ),

@@ -36,30 +36,29 @@ class SignInController {
           final credential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(
                   email: emailAdress, password: password);
-          if (credential.user == null) {
-            toastInfo(msg: 'user not flound');
-          }
-          if (credential.user!.emailVerified) {
-            print('user is not verified');
-          }
-
           var user = credential.user;
-          if (user != null) {
+          if (credential.user == null) {
+            toastInfo(msg: 'User not flound');
+          } else if (!credential.user!.emailVerified) {
+            toastInfo(
+                msg:
+                    'User is not verified please check your email and verify your account');
+          } else if (user != null) {
             // toastInfo(msg: 'User Found!');
-            print('User Found!');
+            toastInfo(msg: 'User exist!');
             //got verified user from firebase
 
           } else {
-            print('no user');
+            toastInfo(msg: 'No user found!');
             //error getting user from friebase
           }
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {
-            print('No user found with this email!');
+            toastInfo(msg: 'No user found with this email!');
           } else if (e.code == 'wrong-password') {
-            print('wrong password');
+            toastInfo(msg: 'Wrong password');
           } else if (e.code == 'invalid-email') {
-            print('invalid-email');
+            toastInfo(msg: 'Invalid-email');
           }
         }
       }
