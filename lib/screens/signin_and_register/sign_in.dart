@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnthings/routes/route_names.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/siginin_events.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_blocs.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_states.dart';
@@ -24,7 +25,7 @@ class _SignInStates extends State<SignIn> {
           color: Styles.bgColor,
           child: SafeArea(
             child: Scaffold(
-                appBar: buildAppBar('Log In', null),
+                appBar: buildAppBarLogInAndRegister('Log In', null),
                 body: Container(
                   color: Styles.bgColor,
                   child: SingleChildScrollView(
@@ -76,10 +77,11 @@ class _SignInStates extends State<SignIn> {
                               SizedBox(
                                 height: 20.h,
                               ),
-                              forgotPasswordOrNeedToRegster(
-                                'Forgot Password?',
-                                null,
-                              ),
+                              forgotPasswordOrNeedToRegster('Forgot Password?',
+                                  () {
+                                Navigator.of(context)
+                                    .popAndPushNamed(AppRoutes.forgetPassword);
+                              }),
                               SizedBox(
                                 height: 20.h,
                               ),
@@ -96,9 +98,8 @@ class _SignInStates extends State<SignIn> {
                                   //write the Register page after you done with the log in
                                   forgotPasswordOrNeedToRegster(
                                       'Create account', () {
-                                    Navigator.of(context).pushNamed(
-                                      'sign up',
-                                    );
+                                    Navigator.of(context)
+                                        .popAndPushNamed(AppRoutes.signUpPage);
                                   }),
                                 ],
                               ),

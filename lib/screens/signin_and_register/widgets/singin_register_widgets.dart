@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnthings/utilities/styles/app_style.dart';
 
-//App Bar
-AppBar buildAppBar(String txt, void Function()? func) {
+//sign in widgte
+
+AppBar buildAppBarLogInAndRegister(String txt, void Function()? func) {
   return AppBar(
     bottom: PreferredSize(
       preferredSize: const Size.fromHeight(10.0),
@@ -20,20 +21,19 @@ AppBar buildAppBar(String txt, void Function()? func) {
         fontWeight: FontWeight.bold,
       ),
     ),
-    leading: txt == 'Create account'
-        ? IconButton(
+    leading: txt == 'Log In'
+        ? null
+        : IconButton(
             icon: Icon(
               Icons.arrow_back,
               color: Styles.wightColor,
             ),
             onPressed: func,
-          )
-        : null,
+          ),
   );
 }
-//
 
-//sign in widgte
+//
 //we need context to accessing bloc later
 Widget buildLogin(BuildContext context) {
   return SizedBox(

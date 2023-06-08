@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learnthings/routes/route_names.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_blocs.dart';
 import 'package:learnthings/screens/widgets/flutter_toast.dart';
 
@@ -44,13 +45,9 @@ class SignInController {
                 msg:
                     'User is not verified please check your email and verify your account');
           } else if (user != null) {
-            // toastInfo(msg: 'User Found!');
-            toastInfo(msg: 'User exist!');
-            //got verified user from firebase
-
+            Navigator.of(context).popAndPushNamed(AppRoutes.application);
           } else {
             toastInfo(msg: 'No user found!');
-            //error getting user from friebase
           }
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {

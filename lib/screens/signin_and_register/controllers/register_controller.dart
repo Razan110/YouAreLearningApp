@@ -49,7 +49,7 @@ class RegisterController {
                 'We have send a verification link to your email. Please check and verified your account');
         Navigator.of(context).pop();
       }
-      if (credential.user!.emailVerified) {
+      if (!credential.user!.emailVerified) {
         toastInfo(msg: 'User is not verified');
       }
     } on FirebaseAuthException catch (e) {

@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnthings/routes/route_names.dart';
 import 'package:learnthings/screens/welcomepage/bloc/welcome_blocs.dart';
 import 'package:learnthings/screens/welcomepage/bloc/welcome_events.dart';
 import 'package:learnthings/screens/welcomepage/bloc/welcome_states.dart';
@@ -112,15 +113,14 @@ class _WelcomeState extends State<Welcome> {
               if (index < 3) {
                 //animation
 
-                pageController.animateToPage(index,
-                    duration: const Duration(microseconds: 500),
-                    curve: Curves.easeIn);
+                pageController.animateToPage(
+                  index,
+                  duration: const Duration(microseconds: 500),
+                  curve: Curves.easeIn,
+                );
               } else {
                 //jump to the new page
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  'signIn',
-                  ((route) => false),
-                );
+                Navigator.of(context).popAndPushNamed(AppRoutes.signInPage);
               }
             },
 

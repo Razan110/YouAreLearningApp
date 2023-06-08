@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnthings/routes/route_names.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/register/register_bloc.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/register/register_events.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/register/register_states.dart';
@@ -24,9 +25,8 @@ class _RegisterState extends State<Register> {
           color: Styles.bgColor,
           child: SafeArea(
             child: Scaffold(
-              appBar: buildAppBar('Sing Up', () {
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil('signIn', ((route) => false));
+              appBar: buildAppBarLogInAndRegister('Sing Up', () {
+                Navigator.of(context).popAndPushNamed(AppRoutes.signInPage);
               }),
               body: Container(
                 color: Styles.bgColor,
@@ -119,7 +119,8 @@ class _RegisterState extends State<Register> {
                             ),
                             Center(
                               child: buildLogInAndRegisterButton('Sign Up', () {
-                                RegisterController(context: context).handleRegister();
+                                RegisterController(context: context)
+                                    .handleRegister();
                                 // print('got click!');
                               }),
                             ),

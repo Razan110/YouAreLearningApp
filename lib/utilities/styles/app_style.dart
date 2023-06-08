@@ -7,6 +7,8 @@ class Styles {
   static Color bgColorDarcker = const Color.fromARGB(255, 11, 36, 71);
   static Color bgColor = const Color.fromARGB(255, 30, 32, 86);
   static Color buttomColor = const Color.fromARGB(255, 143, 146, 207);
+  static Color bottomBarColor = const Color.fromARGB(255, 184, 186, 228);
+  static Color bottomBarBgColor = const Color.fromARGB(255, 81, 85, 150);
   static Color seaColor = const Color.fromARGB(255, 185, 233, 249);
   static Color pinkColoor = const Color.fromARGB(255, 255, 163, 253);
   static Color darkPinkColoor = const Color.fromARGB(255, 227, 132, 255);
