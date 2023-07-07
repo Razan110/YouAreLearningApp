@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Styles {
   static Color blackColor = const Color.fromARGB(255, 0, 0, 0);
   static Color wightColor = const Color.fromARGB(255, 255, 255, 255);
-  static Color bgColorDarcker = const Color.fromARGB(255, 11, 36, 71);
+  static Color bgColorDarcker = const Color.fromARGB(255, 12, 11, 71);
   static Color bgColor = const Color.fromARGB(255, 30, 32, 86);
   static Color buttomColor = const Color.fromARGB(255, 143, 146, 207);
   static Color bottomBarColor = const Color.fromARGB(255, 184, 186, 228);
-  static Color bottomBarBgColor = const Color.fromARGB(255, 81, 85, 150);
+  //static Color bottomBarBgColor = const Color.fromARGB(255, 81, 85, 150);
   static Color seaColor = const Color.fromARGB(255, 185, 233, 249);
   static Color pinkColoor = const Color.fromARGB(255, 255, 163, 253);
   static Color darkPinkColoor = const Color.fromARGB(255, 227, 132, 255);

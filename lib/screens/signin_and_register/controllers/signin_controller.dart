@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learnthings/constant/constant.dart';
+import 'package:learnthings/global.dart';
 import 'package:learnthings/routes/route_names.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_blocs.dart';
 import 'package:learnthings/screens/widgets/flutter_toast.dart';
@@ -45,6 +47,9 @@ class SignInController {
                 msg:
                     'User is not verified please check your email and verify your account');
           } else if (user != null) {
+            //rember that we are logged in
+            Global.storageService
+                .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345678");
             Navigator.of(context).popAndPushNamed(AppRoutes.application);
           } else {
             toastInfo(msg: 'No user found!');

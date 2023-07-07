@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learnthings/global.dart';
 import 'package:learnthings/routes/route_names.dart';
 import 'package:learnthings/screens/application/bloc/app_bloc.dart';
 import 'package:learnthings/screens/application/application.dart';
-import 'package:learnthings/screens/forgetPassword/forget_password.dart';
+import 'package:learnthings/screens/application/home/bloc/home_bloc.dart';
+import 'package:learnthings/screens/application/home/home.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/register/register_bloc.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_blocs.dart';
 import 'package:learnthings/screens/signin_and_register/register.dart';
@@ -35,18 +37,17 @@ class AppPages {
         page: const Welcome(),
         bloc: BlocProvider(create: (_) => WelcomeBloc()),
       ),
-      // PagesEntity(
-      //   route: AppRoutes.forgetPassword,
-      //   page: const ForgetPassword(),
-      //   //change it later !!!!!!!!!!!!**
-      //   bloc: BlocProvider(create: (_) => ForgetPasswordBloc()),
-      // ),
       PagesEntity(
         route: AppRoutes.application,
         page: const Application(),
-        //change it later !!!!!!!!!!!!**
         bloc: BlocProvider(create: (_) => AppBloc()),
       ),
+      PagesEntity(
+        route: AppRoutes.home,
+        page: const HomePage(),
+        bloc: BlocProvider(create: (_) => HomeBloc()),
+      ),
+      
     ];
   }
 
@@ -59,13 +60,27 @@ class AppPages {
     return blocProvider;
   }
 
-//modal that cover the entier screen as we click on navigator object
+//this func to redirect our route to diffrent pages and screens
   static MaterialPageRoute generateRoutSetting(RouteSettings settings) {
     if (settings.name != null) {
       //check for route name matching when navigetor triggered
       var result = routes().where((element) => element.route == settings.name);
       //check if result is emty or not and return a widget
       if (result.isNotEmpty) {
+        //to checke the value of STORAGE_DEVICE_OPEN_FIRST_TIME
+        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
+        //if de deviceFirstOpen was true which is mean the app is already opend then the first page is signin if not welcome
+        if (result.first.route == AppRoutes.initalPage && deviceFirstOpen) {
+          bool isLoggedIn = Global.storageService.getIsLoggedIn();
+          //ig the user already logged in
+          if (isLoggedIn) {
+            return MaterialPageRoute(
+                builder: (_) => const Application(), settings: settings);
+          } else {
+            return MaterialPageRoute(
+                builder: (_) => const SignIn(), settings: settings);
+          }
+        }
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
       }

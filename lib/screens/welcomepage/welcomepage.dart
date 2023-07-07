@@ -2,6 +2,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnthings/constant/constant.dart';
+import 'package:learnthings/global.dart';
 import 'package:learnthings/routes/route_names.dart';
 import 'package:learnthings/screens/welcomepage/bloc/welcome_blocs.dart';
 import 'package:learnthings/screens/welcomepage/bloc/welcome_events.dart';
@@ -119,7 +121,11 @@ class _WelcomeState extends State<Welcome> {
                   curve: Curves.easeIn,
                 );
               } else {
-                //jump to the new page
+                //jump to sign in If STORAGE_DEVICE_OPEN_FIRST_TIME is false
+                //or to application page if STORAGE_DEVICE_OPEN_FIRST_TIME is true
+                Global.storageService
+                    .setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              //  print('${Global.storageService.getDeviceFirstOpen()}');
                 Navigator.of(context).popAndPushNamed(AppRoutes.signInPage);
               }
             },

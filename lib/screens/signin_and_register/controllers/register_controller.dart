@@ -50,7 +50,7 @@ class RegisterController {
         Navigator.of(context).pop();
       }
       if (!credential.user!.emailVerified) {
-        toastInfo(msg: 'User is not verified');
+        toastInfo(msg: 'User is register but is\'nt verified');
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
