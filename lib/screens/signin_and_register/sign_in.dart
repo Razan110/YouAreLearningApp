@@ -114,6 +114,9 @@ class _SignInStates extends State<SignIn> {
                                   // print('got click!');
                                 }),
                               ),
+                              SizedBox(
+                                height: 80.h,
+                              ),
                             ],
                           ),
                         )

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnthings/utilities/styles/app_style.dart';
 
-AppBar pagesBuildAppBar(void Function()? func) {
+AppBar pagesBuildAppBar(void Function()? func, String text) {
   return AppBar(
     backgroundColor: Styles.bgColorDarcker,
     title: Row(
@@ -15,13 +15,19 @@ AppBar pagesBuildAppBar(void Function()? func) {
             'assets/images/menu.png',
           ),
         ),
+        Text(
+          text,
+          style: Styles.headLine1,
+        ),
         GestureDetector(
           child: Container(
             width: 30.w,
             height: 30.h,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/user.png'),
+                image: text == 'Profile'
+                    ? const AssetImage('assets/images/dots-3.png')
+                    : const AssetImage('assets/images/user.png'),
               ),
             ),
           ),

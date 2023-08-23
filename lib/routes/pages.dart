@@ -47,7 +47,6 @@ class AppPages {
         page: const HomePage(),
         bloc: BlocProvider(create: (_) => HomeBloc()),
       ),
-      
     ];
   }
 

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -178,20 +177,27 @@ Widget menuView(String text1, String text2, void Function()? func) {
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
-                  Styles.bottomBarColor,
-                  null),
+                  Styles.seaColor,
+                  () {}
+                  // () {
+                  //   return courseGraid2;
+                  // },
+                  ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 10.0),
               child: _reuseableSubTitleText(
-                  'Popular',
-                  Styles.inputText.copyWith(
-                    color: Styles.bgColorDarcker,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  Styles.bottomBarColor,
-                  null),
+                'Popular',
+                Styles.inputText.copyWith(
+                  color: Styles.bgColorDarcker,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+                Styles.bottomBarColor,
+                () {
+                  // Navigator.p
+                },
+              ),
             ),
             _reuseableSubTitleText(
                 'Newest',
@@ -204,11 +210,6 @@ Widget menuView(String text1, String text2, void Function()? func) {
                 null),
           ],
         ),
-        Row(
-          children: [
-            //
-          ],
-        )
       ],
     ),
   );
@@ -232,6 +233,49 @@ Widget _reuseableSubTitleText(
           style: style,
         ),
       ),
+    ),
+  );
+}
+
+//for course graid ui
+Widget courseGraid() {
+  return Container(
+    // color: Colors.blue,
+    padding: EdgeInsets.all(10.w),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.w),
+      image: const DecorationImage(
+        fit: BoxFit.cover,
+        image: AssetImage('assets/images/Image.png'),
+      ),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Best IT coures',
+          style: Styles.headLine2
+              .copyWith(fontSize: 15, fontWeight: FontWeight.bold),
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          //textAlign: TextAlign.left,
+          softWrap: false,
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Text(
+          'From beginner to professional',
+          style: Styles.headLine2.copyWith(
+            fontSize: 10,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          //textAlign: TextAlign.left,
+          softWrap: false,
+        ),
+      ],
     ),
   );
 }
