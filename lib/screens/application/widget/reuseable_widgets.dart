@@ -2,6 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnthings/utilities/styles/app_style.dart';
 
+//just the page name
+AppBar pagesBuildAppBarPageName(String txt) {
+  return AppBar(
+    backgroundColor: Styles.bgColorDarcker,
+    title: Text(
+      txt,
+      style: Styles.headLine1,
+    ),
+  );
+}
+
 AppBar pagesBuildAppBar(void Function()? func, String text) {
   return AppBar(
     backgroundColor: Styles.bgColorDarcker,

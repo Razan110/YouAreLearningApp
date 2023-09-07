@@ -6,6 +6,8 @@ import 'package:learnthings/screens/application/bloc/app_bloc.dart';
 import 'package:learnthings/screens/application/application.dart';
 import 'package:learnthings/screens/application/home/bloc/home_bloc.dart';
 import 'package:learnthings/screens/application/home/home.dart';
+import 'package:learnthings/screens/application/profile/settings/bloc/setting_bloc.dart';
+import 'package:learnthings/screens/application/profile/settings/settings_page.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/register/register_bloc.dart';
 import 'package:learnthings/screens/signin_and_register/bloc/signIn/signin_blocs.dart';
 import 'package:learnthings/screens/signin_and_register/register.dart';
@@ -46,6 +48,11 @@ class AppPages {
         route: AppRoutes.home,
         page: const HomePage(),
         bloc: BlocProvider(create: (_) => HomeBloc()),
+      ),
+      PagesEntity(
+        route: AppRoutes.settings,
+        page: const SettingsPage(),
+        bloc: BlocProvider(create: (_) => SettingsBloc()),
       ),
     ];
   }

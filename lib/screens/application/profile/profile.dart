@@ -17,104 +17,51 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: pagesBuildAppBar(null, 'Profile'),
       backgroundColor: Styles.bgColorDarcker,
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.only(top: 20),
-              child: Column(
-                children: [
-                  Center(
-                    child: Container(
-                      width: 100.w,
-                      height: 100.h,
-                      decoration: const BoxDecoration(
-                        //color: Styles.bgColorDarcker,
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/girl-2.png'),
-                          // scale: 3,
-                        ),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(top: 80.0, left: 75),
-                        child: Image(
-                          image: AssetImage('assets/images/editing.png'),
-                        ),
-                      ),
-                    ),
+      body: Container(
+        padding: const EdgeInsets.only(top: 20),
+        child: Column(
+          children: [
+            Center(
+              child: Container(
+                width: 100.w,
+                height: 100.h,
+                decoration: const BoxDecoration(
+                  //color: Styles.bgColorDarcker,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/girl-2.png'),
+                    // scale: 3,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Lanai',
-                          style: Styles.headLine2
-                              .copyWith(color: Styles.wightColor),
-                        ),
-                      ],
-                    ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.only(top: 80.0, left: 75),
+                  child: Image(
+                    image: AssetImage('assets/images/editing.png'),
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.only(top: 5, right: 29, left: 29),
+            Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
               child: Row(
-                //crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  profileGraid(
-                      'assets/images/video-camera-2.png', 'My Courses'),
-                  const SizedBox(
-                    width: 10,
+                  Text(
+                    'Lanai',
+                    style: Styles.headLine2.copyWith(color: Styles.wightColor),
                   ),
-                  profileGraid('assets/images/open-book.png', 'By Courses'),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  profileGraid('assets/images/star.png', '4.9'),
                 ],
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-                // decoration: BoxDecoration(color: Styles.bottomBarColortran),
-                padding: const EdgeInsets.only(top: 50, left: 29),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15),
-                      child: settingColumn(
-                          'assets/images/setting-2.png', 'Settings'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15),
-                      child: settingColumn(
-                          'assets/images/badge-2.png', 'Achievments'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15),
-                      child: settingColumn('assets/images/save-instagram-2.png',
-                          'Saved Courses'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15),
-                      child:
-                          settingColumn('assets/images/bell-3.png', 'Reminder'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15),
-                      child: settingColumn(
-                          'assets/images/wallet-2.png', 'Payment Details'),
-                    ),
-                  ],
-                )),
-          )
-        ],
+            Container(
+              padding: const EdgeInsets.only(left: 20),
+              child: profileGraid(),
+            ),
+            Container(
+              padding: const EdgeInsets.only(top: 40),
+              child: buildListView(context),
+            ),
+          ],
+        ),
       ),
     );
   }
